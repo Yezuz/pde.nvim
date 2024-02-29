@@ -1,0 +1,14 @@
+vim.opt.incsearch = true
+vim.opt.guifont = { 'Monaco Nerd Font', ':h9' }
+vim.opt.wrap = false
+vim.opt.scrolloff = 30
+vim.opt.sidescrolloff = 30
+vim.opt.title = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.g.neovide_transparency = 0.90
+vim.g.neovide_floating_blur_amount_x = 2.0
+vim.g.neovide_floating_blur_amount_y = 2.0
+vim.g.neovide_cursor_vfx_mode = 'wireframe'
+vim.g.neovide_confirm_quit = true
+vim.g.neovide_cursor_animate_in_insert_mode = true
