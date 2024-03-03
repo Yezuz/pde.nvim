@@ -376,6 +376,31 @@ return {
     dependencies = { { 'nvim-tree/nvim-web-devicons' } },
   },
 
+  {
+    'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+    init = function()
+      vim.g.barbar_auto_setup = false
+    end,
+    opts = {
+      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+      animation = true,
+      insert_at_start = true,
+    },
+    version = '^1.0.0',
+  },
+
+  {
+    'Bekaboo/dropbar.nvim',
+    -- optional, but required for fuzzy finder support
+    dependencies = {
+      'nvim-telescope/telescope-fzf-native.nvim',
+    },
+  },
+
   -- rust
   {
     'mrcjkb/rustaceanvim',
@@ -388,6 +413,20 @@ return {
     event = { 'BufRead Cargo.toml' },
     config = function()
       require('crates').setup()
+    end,
+  },
+
+  -- dotnet
+  {
+    'iabdelkareem/csharp.nvim',
+    dependencies = {
+      'williamboman/mason.nvim', -- Required, automatically installs omnisharp
+      'mfussenegger/nvim-dap',
+      'Tastyep/structlog.nvim', -- Optional, but highly recommended for debugging
+    },
+    config = function()
+      require('mason').setup() -- Mason setup must run before csharp
+      require('csharp').setup()
     end,
   },
 }
