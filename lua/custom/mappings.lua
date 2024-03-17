@@ -9,6 +9,7 @@ return {
   vim.keymap.set('n', '<c-n>', '<Cmd>Neotree toggle<CR>'),
   vim.keymap.set('n', '<C-i>', '<Cmd>BufferNext<CR>', { silent = true }),
   vim.keymap.set('n', '<C-c>', '<Cmd>BufferClose<CR>'),
+  vim.keymap.set('i', 'kj', '<Esc>'),
   -- CSharp
   vim.keymap.set('n', 'cgd', function()
     require('csharp').go_to_definition()
