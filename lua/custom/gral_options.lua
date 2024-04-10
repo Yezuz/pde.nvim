@@ -9,7 +9,7 @@ vim.opt.shiftwidth = 4
 if vim.g.neovide then
   vim.opt.guifont = { 'Monaco Nerd Font', ':h9' }
   -- vim.opt.guicursor = { 'a:blinkwait700-blinkoff400-blinkon250' }
-  vim.g.neovide_transparency = 1
+  vim.g.neovide_transparency = 0.90
   vim.g.neovide_window_blurred = true
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
