@@ -603,23 +603,24 @@ require('lazy').setup {
 
       require('java').setup()
       require('lspconfig').jdtls.setup {}
-      require('lspconfig').rust_analyzer.setup {
-        settings = {
-          ['rust-analyzer'] = {
-            procMacro = {
-              ignored = {
-                leptos_macro = {
-                  'component',
-                  'server',
-                },
-              },
-            },
-          },
-        },
-      }
+      -- require('lspconfig').rust_analyzer.setup {
+      --   settings = {
+      --     ['rust-analyzer'] = {
+      --       procMacro = {
+      --         ignored = {
+      --           leptos_macro = {
+      --             'component',
+      --             'server',
+      --           },
+      --         },
+      --       },
+      --     },
+      --   },
+      -- }
 
       require('mason-lspconfig').setup {
         handlers = {
+          ['rust_analyzer'] = function() end,
           function(server_name)
             local server = servers[server_name] or {}
             require('lspconfig')[server_name].setup {
