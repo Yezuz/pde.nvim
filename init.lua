@@ -96,14 +96,13 @@ vim.g.maplocalleader = ' '
 --  For more options, you can see `:help option-list`
 require 'custom.gral_options'
 -- Make line numbers default
-vim.opt.number = true
+vim.opt.number = false
 -- You can also add relative line numbers, for help with jumping.
 --  Experiment for yourself to see if you like it!
 -- vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
-
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
 
@@ -513,6 +512,9 @@ require('lazy').setup {
               buffer = event.buf,
               callback = vim.lsp.buf.clear_references,
             })
+          end
+          if client and client.server_capabilities.inlayHintProvider then
+            vim.lsp.inlay_hint.enable(event.buf, true)
           end
         end,
       })
