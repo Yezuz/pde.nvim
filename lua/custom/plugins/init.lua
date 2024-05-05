@@ -3,91 +3,16 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  -- THEMES
-  {
-    'catppuccin/nvim',
-    name = 'catpuccin',
-    priority = 1000,
-    config = function()
-      require('catppuccin').setup {
-        flavour = 'mocha',
-        transparent_background = false,
-        background = { light = 'latte', dark = 'macchiato' },
-        dim_inactive = {
-          enabled = false,
-          shade = 'dark',
-          percentage = 0.15,
-        },
-        styles = {
-          comments = { 'italic' },
-          conditionals = { 'italic' },
-          functions = { 'bold' },
-        },
-      }
-      require('catppuccin').load()
-    end,
-  },
-
-  {
-    'luisiacc/gruvbox-baby',
-    name = 'gruvboxbaby',
-    config = function()
-      vim.g.gruvbox_baby_telescope_theme = 1
-      vim.g.gruvbox_baby_background_color = 'dark'
-      -- vim.cmd 'colorscheme gruvbox-baby'
-    end,
-  },
-
-  {
-    'rose-pine/neovim',
-    name = 'rose-pine',
-    config = function()
-      require('rose-pine').setup {
-        variant = 'auto',
-        dark_variant = 'main',
-        dim_inactive_windows = true,
-        styles = {
-          bold = true,
-          italic = true,
-        },
-      }
-      -- vim.cmd('colorscheme rose-pine')
-    end,
-  },
-
-  {
-    'Mofiqul/dracula.nvim',
-    name = 'dracula',
-  },
-
-  -- DEV EXPERIENCE --
-
-  -- general
-  {
-    'windwp/nvim-autopairs',
-    -- Optional dependency
-    dependencies = { 'hrsh7th/nvim-cmp' },
-    config = function()
-      require('nvim-autopairs').setup {}
-      -- If you want to automatically add `(` after selecting a function or method
-      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-      local cmp = require 'cmp'
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-    end,
-  },
-
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    version = '*',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-      'MunifTanjim/nui.nvim',
-    },
-    config = function()
-      require('neo-tree').setup {}
-    end,
-  },
+  -- themes
+  require 'custom.plugins.catppuccin',
+  require 'custom.plugins.gruvbox-baby',
+  require 'custom.plugins.rose-pine',
+  require 'custom.plugins.dracula',
+  -- development experience
+  require 'custom.plugins.lint',
+  require 'custom.plugins.gitsigns',
+  require 'custom.plugins.nvim-autopairs',
+  require 'custom.plugins.neo-tree',
 
   {
     'mbbill/undotree',
@@ -109,6 +34,11 @@ return {
       version = '*',
       config = true,
     },
+  },
+
+  {
+    'christoomey/vim-tmux-navigator',
+    lazy = false,
   },
 
   -- {
@@ -348,7 +278,12 @@ return {
         config = {
           packages = { enabled = true },
           shortcut = {
-            { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+            {
+              desc = '󰊳 Update',
+              group = '@property',
+              action = 'Lazy update',
+              key = 'u',
+            },
             {
               icon = ' ',
               icon_hl = '@variable',
@@ -401,6 +336,16 @@ return {
     },
   },
 
+  {
+    's1n7ax/nvim-window-picker',
+    name = 'window-picker',
+    event = 'VeryLazy',
+    version = '2.*',
+    config = function()
+      require('window-picker').setup()
+    end,
+  },
+
   -- RUST
   {
     'mrcjkb/rustaceanvim',
@@ -435,9 +380,11 @@ return {
   {
     'mfussenegger/nvim-jdtls',
   },
+
   {
     'nvim-java/nvim-java',
     dependencies = {
+      'nvim-java/nvim-java-refactor',
       'nvim-java/lua-async-await',
       'nvim-java/nvim-java-core',
       'nvim-java/nvim-java-test',
