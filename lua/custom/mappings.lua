@@ -40,7 +40,6 @@ return {
   vim.keymap.set('v', '>', '>gv'),
   vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv"),
   vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv"),
-  vim.keymap.set('n', '<c-n>', '<Cmd>Neotree toggle<CR>'),
   vim.keymap.set('n', '<C-i>', '<Cmd>BufferNext<CR>', { silent = true }),
   vim.keymap.set('n', '<C-c>', '<Cmd>BufferClose<CR>'),
   vim.keymap.set('i', 'kj', '<Esc>'),
