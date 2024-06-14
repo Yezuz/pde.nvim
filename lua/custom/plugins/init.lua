@@ -3,23 +3,18 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  -- themes
-  require 'custom.plugins.catppuccin',
-  require 'custom.plugins.gruvbox-baby',
-  require 'custom.plugins.rose-pine',
-  require 'custom.plugins.dracula',
-  require 'custom.plugins.tokyonight',
-  -- development experience
-  require 'custom.plugins.lint',
-  require 'custom.plugins.gitsigns',
-  require 'custom.plugins.nvim-autopairs',
-  require 'custom.plugins.neo-tree',
+  require 'custom.plugins.themes',
   require 'custom.plugins.tree-sitter',
   require 'custom.plugins.mini',
   require 'custom.plugins.todo-comments',
-  require 'custom.plugins.nvim-cmp',
   require 'custom.plugins.dashboard-nvim',
   require 'custom.plugins.conform',
+  -- sql
+  require 'custom.plugins.vim-dadbod',
+  -- .net
+  require 'custom.plugins.csharp',
+
+  require 'custom.plugins.nvim-cmp',
 
   {
     'mbbill/undotree',
@@ -96,20 +91,6 @@ return {
     event = { 'BufRead Cargo.toml' },
     config = function()
       require('crates').setup()
-    end,
-  },
-
-  -- DOTNET
-  {
-    'iabdelkareem/csharp.nvim',
-    dependencies = {
-      'williamboman/mason.nvim', -- Required, automatically installs omnisharp
-      'mfussenegger/nvim-dap',
-      'Tastyep/structlog.nvim', -- Optional, but highly recommended for debugging
-    },
-    config = function()
-      require('mason').setup() -- Mason setup must run before csharp
-      require('csharp').setup()
     end,
   },
 

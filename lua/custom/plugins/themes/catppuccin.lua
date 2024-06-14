@@ -8,7 +8,7 @@ return {
       transparent_background = false,
       background = { light = 'latte', dark = 'mocha' },
       dim_inactive = {
-        enabled = false,
+        enabled = true,
         shade = 'dark',
         percentage = 0.15,
       },
@@ -37,6 +37,6 @@ return {
         },
       },
     }
-    vim.cmd.colorscheme 'catppuccin'
+    -- vim.cmd.colorscheme 'catppuccin'
   end,
 }

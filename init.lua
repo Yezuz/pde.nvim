@@ -87,10 +87,9 @@ P.S. You can delete this when you're done too. It's your config now! :)
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: personal nvim settings are now in it's own file
-require 'custom.configs.vim'
 -- [[ Setting options ]]
 -- See `:help vim.opt`
-require 'custom.configs.neovide'
+-- require 'custom.configs.neovide'
 
 -- [[ Basic Autocommands ]]
 --  See :help lua-guide-autocommands
@@ -99,13 +98,6 @@ require 'custom.configs.neovide'
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 require 'custom.auto-cmds'
--- vim.api.nvim_create_autocmd('TextYankPost', {
---   desc = 'Highlight when yanking (copying) text',
---   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
---   callback = function()
---     vim.highlight.on_yank()
---   end,
--- })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -579,6 +571,10 @@ require('lazy').setup {
   --
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.gitsigns',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -587,5 +583,6 @@ require('lazy').setup {
   { import = 'custom.mappings' },
 }
 
+require 'custom.configs.vim'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

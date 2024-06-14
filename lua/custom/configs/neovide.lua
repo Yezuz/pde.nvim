@@ -1,5 +1,6 @@
 if vim.g.neovide then
-  vim.opt.guifont = { 'JetBrainsMono Nerd Font', ':h9' }
+  vim.opt.guifont = { 'Monaco Nerd Font', ':h9' }
+  -- vim.opt.guifont = { 'LigaConsolas Nerd Font', ':h11' }
   -- vim.opt.guicursor = { 'a:blinkwait700-blinkoff400-blinkon250' }
   vim.g.neovide_transparency = 0.90
   vim.g.neovide_window_blurred = true
